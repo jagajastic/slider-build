@@ -19,6 +19,26 @@
 
         h4 {
             margin: 1rem 0;
+            font-weight: 700;
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .image-container {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .image-container img {
+            object-fit: cover;
+            height: 100%;
         }
 
         .btn {
@@ -86,9 +106,31 @@
 
         .main-wrapper .container .wrapper_right {
             position: relative;
-            flex: 1;
             display: flex;
             overflow: hidden;
+        }
+
+        .mco-feature-stories-next-card-content {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: #fff;
+            width: 100%;
+            min-height: 5.25rem;
+            padding-top: 1.5rem;
+            padding-left: 2.75rem;
+            padding-right: calc(1rem * 2);
+            font-size: 0.875rem
+        }
+
+        .mco-feature-stories-next-card-content p {
+            max-width: 12.875rem;
+        }
+
+        .mco-feature-stories-next-card-content span {
+            color: #005c55;
+            font-weight: 600;
         }
 
         .main-wrapper .container .slide_item {
@@ -105,11 +147,20 @@
             background: transparent;
         }
 
+        .mco-feature-stories-card-content {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            padding: 1rem;
+            background: #fff;
+
+        }
+
         .main-wrapper .container .slide_item.active_item {
             z-index: 9;
             position: absolute;
             left: 0;
-            transition: left 1s;
+            transition: left 0.5s;
         }
 
         .main-wrapper .container .wrapper .slide_item:nth-child(1),
@@ -145,10 +196,14 @@
         }
 
         @media (min-width: 768px) {
+            .main-wrapper .container .wrapper_right {
+                flex: 1;
+            }
+
             .mco-feature-stories-card-content {
                 max-width: 25rem;
                 bottom: 0;
-                padding: var(--dimenGutter) calc(var(--dimenGutter) * 2);
+                padding: 1rem calc(1rem * 2);
             }
         }
 
@@ -175,31 +230,78 @@
         <div class="container">
             <div class="wrapper">
                 <div class="slide_item">
-                    <div class="main">item 1 </div>
-                    <div class=".mco-feature-stories-card-content">
+                    <div class="main image-container">
+                        <img src="./Patients-People-Two-People-Hugging-GettyImages.jpg" loading="lazy" alt="bg plain img" />
+                    </div>
+                    <div class="mco-feature-stories-card-content">
                         <h4>When breast cancer hits home</h4>
                         <p>A perspective on courage and perseverance</p>
                         <a href="#" class="btn">Read more</a>
                     </div>
                 </div>
                 <div class="slide_item">
-                    <div class="main">item 2 </div>
+                    <div class="main image-container">
+                        <img src="./kim-bruce-hero-e1600863213600.jpg" loading="lazy" alt="bg plain img" />
+                    </div>
+                    <div class="mco-feature-stories-card-content">
+                        <h4>When breast cancer hits home</h4>
+                        <p>A perspective on courage and perseverance</p>
+                        <a href="#" class="btn">Read more</a>
+                    </div>
                 </div>
                 <div class="slide_item">
-                    <div class="main">item 3</div>
+                    <div class="main image-container">
+                        <img src="./clinical-trials-diversity.jpg" loading="lazy" alt="bg plain img" />
+                    </div>
+                    <div class="mco-feature-stories-card-content">
+                        <h4>When breast cancer hits home</h4>
+                        <p>A perspective on courage and perseverance</p>
+                        <a href="#" class="btn">Read more</a>
+                    </div>
                 </div>
                 <div class="slide_item">
-                    <div class="main">item 4</div>
+                    <div class="main image-container">
+                        <img src="./Meta-Smith-Davis.jpg" loading="lazy" alt="bg plain img" />
+                    </div>
+                    <div class="mco-feature-stories-card-content">
+                        <h4>When breast cancer hits home</h4>
+                        <p>A perspective on courage and perseverance</p>
+                        <a href="#" class="btn">Read more</a>
+                    </div>
                 </div>
             </div>
             <div class="wrapper_right">
                 <div class="slide_item">
+                    <div class="main image-container">
+                        <img src="./kim-bruce-hero-e1600863213600.jpg" loading="lazy" alt="bg plain img" />
+                    </div>
+                    <div class="mco-feature-stories-next-card-content">
+                        <p><span>Next: </span> Dealing with cancer, disparities and a pandemic all at once</p>
+                    </div>
                 </div>
                 <div class="slide_item">
+                    <div class="main image-container">
+                        <img src="./clinical-trials-diversity.jpg" loading="lazy" alt="bg plain img" />
+                    </div>
+                    <div class="mco-feature-stories-next-card-content">
+                        <p><span>Next: </span> Dealing with cancer, disparities and a pandemic all at once</p>
+                    </div>
                 </div>
                 <div class="slide_item">
+                    <div class="main image-container">
+                        <img src="./Meta-Smith-Davis.jpg" loading="lazy" alt="bg plain img" />
+                    </div>
+                    <div class="mco-feature-stories-next-card-content">
+                        <p><span>Next: </span> Dealing with cancer, disparities and a pandemic all at once</p>
+                    </div>
                 </div>
                 <div class="slide_item">
+                    <div class="main image-container">
+                        <img src="./Patients-People-Two-People-Hugging-GettyImages.jpg" loading="lazy" alt="bg plain img" />
+                    </div>
+                    <div class="mco-feature-stories-next-card-content">
+                        <p><span>Next: </span> Dealing with cancer, disparities and a pandemic all at once</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -211,41 +313,7 @@
     </div>
     </div>
 
-    <div id="slide2" class="main-wrapper">
-        <div class="container">
-            <div class="wrapper">
-                <div class="slide_item">
-                    <div class="main">item 1 </div>
 
-                </div>
-                <div class="slide_item">
-                    <div class="main">item 2 </div>
-                </div>
-                <div class="slide_item">
-                    <div class="main">item 3</div>
-                </div>
-                <div class="slide_item">
-                    <div class="main">item 4</div>
-                </div>
-            </div>
-            <div class="wrapper_right">
-                <div class="slide_item">
-                </div>
-                <div class="slide_item">
-                </div>
-                <div class="slide_item">
-                </div>
-                <div class="slide_item">
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    <div class="controls">
-        <div class="cleft" onclick="previousItem()">Previous</div>
-        <div class="cright" onclick="nextItem()">Next</div>
-    </div>
-    </div>
 
     <script>
 
