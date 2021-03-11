@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .main-wrapper {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            min-height: 45rem;
+        }
+        .main-wrapper .container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex: 1;
+        }
+        .main-wrapper .container .wrapper {
+            position: relative;
+            width: 100%;
+            flex: 1;
+            display: flex;
+        }
+        .main-wrapper .container .wrapper .slide_item {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            height: 100%;
+            z-index: 1;
+        }
+        .main-wrapper .container .wrapper .slide_item.active_item {
+            z-index: 9;
+            position: absolute;
+        }
+        .main-wrapper .container .wrapper .slide_item .main {
+            flex: 3;
+        }
+
+        .main-wrapper .container .wrapper .slide_item:nth-child(1) {
+            background: #ff0;
+        }
+
+        .main-wrapper .container .wrapper .slide_item:nth-child(2) {
+            background: #ff0;
+        }
+        .main-wrapper .container .wrapper .slide_item:nth-child(3) {
+            background: #0ff;
+        }
+
+        .main-wrapper .container .wrapper .slide_item .right {
+            flex: 1;
+            background: #333;
+        }
+
+        .main-wrapper .controls {
+            display: flex;
+        }
+        .anim-left {
+            transform: scale3d(1,1,1);
+            transform-origin: left;
+        }
+
+        .main-wrapper .container .wrapper .left-img, .main-wrapper .container .wrapper .right-img {
+            display: flex;
+        }
+
+        .main-wrapper .container .wrapper .left-img {
+            display: flex;
+            background: #000;
+            height: 100%;
+            flex: 3;
+        }
+        .main-wrapper .container .wrapper .right-img {
+            flex: 1;
+            background: green;
+            height: 100%;
+        }
+        .main-wrapper .container .wrapper .right-img, .main-wrapper .container .wrapper .left-img {
+            width: 100%;
+            display: flex;
+            flex-wrap: nowrap;
+            overflow: hidden;
+        }
+
+        .main-wrapper .container .wrapper .left-img .images, .main-wrapper .container .wrapper .left-img .images {
+            flex: 0 0 100%;
+            /* transition: 0.2s; */
+            left: 100%;
+        }
+
+        .main-wrapper .container .wrapper .left-img .images:nth-child(1) {
+            background: #dd0d0d;
+        }
+        .main-wrapper .container .wrapper .left-img .images:nth-child(2) {
+            background: #ff0;
+        }
+        .main-wrapper .container .wrapper .left-img .images:nth-child(3) {
+            background: #333;
+        }
+        .main-wrapper .container .wrapper .left-img .images:nth-child(4) {
+            background: #d0d;
+        }
+
+        .move-left {
+            position: relative;
+            left: 0;
+            transition: left 2s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="container">
+            <div class="wrapper">
+                <div class="left-img">
+                    <div class="images"></div>
+                    <div class="images"></div>
+                    <div class="images"></div>
+                </div>
+                <div class="right-img">
+                    <div class="images"></div>
+                    <div class="images"></div>
+                    <div class="images"></div>
+                </div>
+                <!-- <div class="slide_item">
+                    <div class="main">item 1 </div>
+                    <div class="right">2</div>
+                </div>
+                <div class="slide_item">
+    
+                    <div class="main">item 2 </div>
+                    <div class="right">2</div>
+                </div>
+                <div class="slide_item">
+    
+                    <div class="main">item 3</div>
+                    <div class="right">2</div>
+                </div>
+                <div class="slide_item">
+                    <div class="main">item 4</div>
+                    <div class="right">2</div>
+                </div> -->
+            </div>
+        </div>
+        <div class="controls">
+            <div class="cleft" onclick="previousItem()">Previous</div>
+            <div class="cright" onclick="aNext()">Next</div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        let currentIndex = 0;
+        console.log(currentIndex)
+        const sliders = document.querySelectorAll('.slide_item')
+        // sliders[currentIndex].classList.add('active_item');
+        const lef = document.querySelector('.wrapper .left-img');
+
+        let count = 0;
+        function aNext() {
+            const lef = document.querySelector('.wrapper .left-img');
+            const all = lef.querySelectorAll('.images');
+            lef.firstElementChild.classList.add('move-left');
+            // let edit = setInterval(() => {
+            //     console.log("interval")
+            //     all.forEach(elem => {
+            //         elem.classList.add('move-left');
+            //         elem.setAttribute("style", `left: -${count}%`);
+            //     });
+            //     ++count;
+            //     console.log(count);
+            //     if(count === 100) {
+            //         clearInterval(edit);
+            //         count = 100;
+            //     }
+            // }, 0.5);
+        }
+
+        function nextItem() {
+            // console.log("Next before",currentIndex)
+                        sliders[currentIndex].querySelector('.main').classList.add('anim-left');
+
+            sliders[currentIndex].classList.remove('active_item');
+            if (currentIndex === sliders.length - 1) {
+                currentIndex = 0;
+                sliders[currentIndex].classList.add('active_item');
+                return;
+            }
+            currentIndex++;
+            sliders[currentIndex].classList.add('active_item');
+            // console.log(currentIndex)
+        }
+
+        function previousItem() {
+            // console.log("Prev before",currentIndex)
+            sliders[currentIndex].classList.remove('active_item');
+            if (currentIndex === 0 || currentIndex < 0) {
+                currentIndex = sliders.length - 1;
+                sliders[currentIndex].classList.add('active_item');
+                return;
+            }
+
+            currentIndex--;
+            sliders[currentIndex].classList.add('active_item');
+            // console.log(currentIndex)
+        }
+    </script>
+
+</body>
+
+</html>
